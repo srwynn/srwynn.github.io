@@ -20,7 +20,7 @@
     }
     body {
       font-family: 'Georgia', serif;
-      font-size: 17px; 
+      font-size: 17px;
       line-height: 1.7;
       color: var(--text);
       background: var(--white);
@@ -51,8 +51,8 @@
 
     /* ── Hero / About ── */
     #about {
-      background: linear-gradient(rgba(20,40,70,.65), rgba(20,40,70,.75)),
-                  url('figures/CCD5B2CD-DFF4-4B93-9349-CBB1A86AFF00_1_201_a.jpeg') center/cover no-repeat;
+      background: linear-gradient(rgba(10,10,10,.25), rgba(10,10,10,.35)),
+                  url('figures/CCD5B2CD-DFF4-4B93-9349-CBB1A86AFF00_1_201_a.jpeg') center 0%/cover no-repeat;
       color: var(--white);
       padding: 72px 0;
     }
@@ -112,6 +112,11 @@
     .project-info p { font-size: .92rem; color: var(--text); line-height: 1.6; }
     .project-tag { display: inline-block; margin-top: 10px; padding: 3px 10px; border-radius: 12px; background: #e8f0f8; color: var(--ocean); font-family: sans-serif; font-size: .78rem; }
     @media (max-width: 600px) { .project-list li { flex-direction: column; } .project-fig, .project-fig .no-fig { width: 100%; } }
+    .project-fig img { cursor: zoom-in; }
+    #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.85); z-index: 1000; align-items: center; justify-content: center; padding: 24px; }
+    #lightbox.open { display: flex; }
+    #lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 4px; }
+    #lightbox:after { content: '✕'; position: absolute; top: 20px; right: 28px; color: #fff; font-size: 1.5rem; cursor: pointer; }
 
     /* ── Publications ── */
     .pub-list { list-style: none; }
@@ -194,7 +199,7 @@
           </div>
           <div class="project-info">
             <h3>Base-state dependence of parameter sensitivity for the Twomey effect</h3>
-            <p>Climate models use uncertain parameters to represent aerosol–cloud processes. We show that restricting sensitivity analysis to simulations matching the observed base cloud state reveals a different, and more meaningful, set of controlling parameters for the Twomey effect.</p>
+            <p>Climate models use uncertain parameters to represent aerosol–cloud processes. To identify which parameters are most important, scientists commonly use a multitude of simulations where these parameters are varied uniformly. We show that restricting our analysis to simulations matching the base cloud state gives a different and more meaningful answer about which parameters drive the Twomey Effect. This study provides a simple model agnostic framework for calculating a constrained global sensitivity analysis, through this we find regime-based dependence of parameter sensitivity for the Twomey effect. <a href="https://doi.org/10.5194/egusphere-2026-2811" target="_blank">Read the preprint.</a></p>
           </div>
         </li>
 
@@ -257,6 +262,22 @@
     <p>Sophie Wynn · Scripps Institution of Oceanography · <a href="mailto:srwynn@ucsd.edu">srwynn@ucsd.edu</a></p>
     <p style="margin-top:6px;">© 2026 · Built with GitHub Pages</p>
   </footer>
+
+  <div id="lightbox">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    document.querySelectorAll('.project-fig img').forEach(img => {
+      img.addEventListener('click', () => {
+        lbImg.src = img.src;
+        lightbox.classList.add('open');
+      });
+    });
+    lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
+  </script>
 
 </body>
 </html>
