@@ -18,7 +18,7 @@
       --border: #dde3ea;
       --max-w:  860px;
     }
-    body {  
+    body {
       font-family: 'Georgia', serif;
       font-size: 17px;
       line-height: 1.7;
@@ -51,7 +51,8 @@
 
     /* ── Hero / About ── */
     #about {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--ocean) 100%);
+      background: linear-gradient(rgba(20,40,70,.65), rgba(20,40,70,.75)),
+                  url('figures/CCD5B2CD-DFF4-4B93-9349-CBB1A86AFF00_1_201_a.jpeg') center/cover no-repeat;
       color: var(--white);
       padding: 72px 0;
     }
@@ -101,30 +102,16 @@
       display: inline-block;
     }
 
-    /* ── Research cards ── */
-    .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-    @media (max-width: 640px) { .projects { grid-template-columns: 1fr; } }
-    .card {
-      border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
-      transition: box-shadow .2s;
-    }
-    .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
-    .card-img {
-      width: 100%; height: 180px; object-fit: cover;
-      background: linear-gradient(135deg, #e8f0f8, #d0e8e8);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--muted); font-family: sans-serif; font-size: .85rem;
-    }
-    .card-img img { width: 100%; height: 100%; object-fit: cover; }
-    .card-body { padding: 20px; }
-    .card-body h3 { font-size: 1.05rem; color: var(--navy); margin-bottom: 8px; }
-    .card-body p { font-size: .92rem; color: var(--text); line-height: 1.6; }
-    .card-tag {
-      display: inline-block; margin-top: 10px;
-      padding: 3px 10px; border-radius: 12px;
-      background: #e8f0f8; color: var(--ocean);
-      font-family: sans-serif; font-size: .78rem;
-    }
+    /* ── Research projects ── */
+    .project-list { list-style: none; }
+    .project-list li { padding: 24px 0; border-bottom: 1px solid var(--border); display: flex; gap: 28px; align-items: flex-start; }
+    .project-fig { flex-shrink: 0; width: 320px; }
+    .project-fig img { width: 100%; border-radius: 4px; }
+    .project-fig .no-fig { width: 220px; height: 140px; background: linear-gradient(135deg, #e8f0f8, #d0e8e8); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-family: sans-serif; font-size: .8rem; }
+    .project-info h3 { font-size: 1.05rem; color: var(--navy); margin-bottom: 8px; }
+    .project-info p { font-size: .92rem; color: var(--text); line-height: 1.6; }
+    .project-tag { display: inline-block; margin-top: 10px; padding: 3px 10px; border-radius: 12px; background: #e8f0f8; color: var(--ocean); font-family: sans-serif; font-size: .78rem; }
+    @media (max-width: 600px) { .project-list li { flex-direction: column; } .project-fig, .project-fig .no-fig { width: 100%; } }
 
     /* ── Publications ── */
     .pub-list { list-style: none; }
@@ -171,6 +158,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#research">Research</a></li>
         <li><a href="#publications">Publications</a></li>
+        <li><a href="#teaching">Teaching</a></li>
       </ul>
     </div>
   </nav>
@@ -187,19 +175,9 @@
           Climate Analytics Lab
         </div>
         <p>
-          [Write a 2–3 sentence bio here describing your research interests,
-          what questions you're trying to answer, and your broader motivation.
-          Example: I study how large-scale ocean–atmosphere variability drives
-          regional precipitation extremes, with a focus on improving decadal
-          predictability in the western U.S.]
+          I am interested in how aerosol–cloud interactions are represented in global climate models. My research aims to reduce uncertainty in the effective radiative forcing from anthropogenic aerosols.
         </p>
-        <div class="links">
-          <a href="mailto:srwynn@ucsd.edu">Email</a>
-          <a href="cv.pdf" target="_blank">CV</a>
-          <a href="https://github.com/srwynn" target="_blank">GitHub</a>
-          <!-- Add Google Scholar, Twitter/X, etc. as needed -->
-          <!-- <a href="https://scholar.google.com/..." target="_blank">Google Scholar</a> -->
-        </div>
+        <p style="margin-top: 20px; font-family: sans-serif; font-size: .9rem; color: #a8c8e8;">srwynn [at] ucsd [dot] edu</p>
       </div>
     </div>
   </section>
@@ -208,37 +186,29 @@
   <section id="research">
     <div class="container">
       <h2 class="section-title">Research</h2>
-      <div class="projects">
+      <ul class="project-list">
 
-        <!-- Project 1 — replace text and add a figure -->
-        <div class="card">
-          <div class="card-img">
-            <!-- To add a figure: replace this div with:
-                 <img src="figures/project1.png" alt="Project 1 figure"> -->
-            Drop figure here (project1.png)
+        <li>
+          <div class="project-fig">
+            <img src="figures/local_twomey_sensitivity300.png" alt="Local Twomey Effect Sensitivity">
           </div>
-          <div class="card-body">
-            <h3>Project Title</h3>
-            <p>Brief description of this project — what question you're tackling, your approach, and key findings or status.</p>
-            <span class="card-tag">Climate Dynamics</span>
+          <div class="project-info">
+            <h3>Base-state dependence of parameter sensitivity for the Twomey effect</h3>
+            <p>Climate models use uncertain parameters to represent aerosol–cloud processes. We show that restricting sensitivity analysis to simulations matching the observed base cloud state reveals a different, and more meaningful, set of controlling parameters for the Twomey effect.</p>
           </div>
-        </div>
+        </li>
 
-        <!-- Project 2 -->
-        <div class="card">
-          <div class="card-img">
-            Drop figure here (project2.png)
+        <li>
+          <div class="project-fig">
+            <div class="no-fig">Figure coming soon</div>
           </div>
-          <div class="card-body">
-            <h3>Project Title</h3>
-            <p>Brief description of this project — what question you're tackling, your approach, and key findings or status.</p>
-            <span class="card-tag">Machine Learning</span>
+          <div class="project-info">
+            <h3>Buffering of cloud microphysical and macrophysical responses across stratocumulus decks</h3>
+            <p>Coming soon.</p>
           </div>
-        </div>
+        </li>
 
-        <!-- Add more projects by copying a .card block above -->
-
-      </div>
+      </ul>
     </div>
   </section>
 
@@ -264,6 +234,20 @@
 
         <!-- Copy the <li> block above to add more papers -->
 
+      </ul>
+    </div>
+  </section>
+
+  <!-- Teaching & Outreach -->
+  <section id="teaching">
+    <div class="container">
+      <h2 class="section-title">Teaching &amp; Outreach</h2>
+      <ul style="list-style: none; padding: 0;">
+        <li style="padding: 10px 0; border-bottom: 1px solid var(--border); font-size: .95rem;"><strong>Teaching Assistant</strong> · The Atmosphere, UCSD Extended Studies · Fall Quarter 2025</li>
+        <li style="padding: 10px 0; border-bottom: 1px solid var(--border); font-size: .95rem;"><strong>Instructor</strong> · SIO Incoming Graduate Summer Student Math Workshop, taught focused sessions on vector calculus and integrals to prepare students for fluid mechanics coursework · 2024, 2025, 2026</li>
+        <li style="padding: 10px 0; border-bottom: 1px solid var(--border); font-size: .95rem;"><strong>Peer Mentor</strong> · Supported incoming SIO climate science graduate and undergraduate students in navigating research life at Scripps · 2024, 2025</li>
+        <li style="padding: 10px 0; border-bottom: 1px solid var(--border); font-size: .95rem;"><strong>Science Communicator</strong> · Birch Aquarium, developed a hands-on cloud formation demonstration for high school teachers as part of aerosol and climate education resources · 2026</li>
+        <li style="padding: 10px 0; border-bottom: 1px solid var(--border); font-size: .95rem;"><strong>Volunteer</strong> · NOSB Garabaldi Bowl · 2024</li>
       </ul>
     </div>
   </section>
